@@ -8,8 +8,19 @@ const pipe = (...fns) => firstArg => fns.reduce((returnValue, fn) => fn(returnVa
 
 const makeTag = tag => str => `<${tag}>${str}</${tag}>`
 
-// complete this function
-const makePoemHTML = () => {}
+const makePoemHTML = ([{ title, author, lines }]) => {
+  let makeTitle = makeTag("h2")(title);
+  let makeAuthor = pipe(makeTag("em"), makeTag("h3"))(`by ${author}`);
+  let allStanzasArr = [];
+  let indivStanzaArr = [];
+  lines.forEach((line, index) => {
+
+
+
+    let stanzaStr = ""
+     allStanzasArr.forEach((indivStanzaArr) => {
+       stanzaStr += makeTag("p")(indivStanzaArr.join("<br/>")); 
+     });
 
 // attach a click event to #get-poem
 getPoemBtn.onclick = async function() {
